@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* media quiry part strat */
+@media only screen and (max-width:600px){
+    nav{
+        display: none;
+    }
+    #headerBtn{
+        display: none;
+    }
+    #BarIcon{
+        display: block;
+        cursor: pointer;
+    }
+    #productDetails{
+        margin: 10px;
+    }
+    #cateGery{
+        font-size: 10px;
+    }
+}
+/* media quiry part end */
