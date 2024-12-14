@@ -8,7 +8,7 @@ import ProductDetails from "./ProductDetails";
 import MainContext from "./context/MainContext";
 import Cart from "./Cart";
 import Login from "./Login";
-import Signup from "./signup";
+import Signup from "./Signup";
 
 const Layout = () => {
   const router = createBrowserRouter([
