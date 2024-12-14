@@ -10,7 +10,7 @@ const About = () => {
         
         {/* Introduction */}
         <p className="text-lg text-gray-700 text-center mb-6">
-          At <span className="font-bold"> ShopFusion</span> , we believe in offering products that bring quality, innovation, and value to our customers. Our goal is to provide you with an exceptional shopping experience, whether you're looking for everyday essentials, trendy items, or unique gifts.
+          At <span className="font-bold">Fashion Shop</span> , we believe in offering products that bring quality, innovation, and value to our customers. Our goal is to provide you with an exceptional shopping experience, whether you're looking for everyday essentials, trendy items, or unique gifts.
         </p>
 
         {/* Our Product Categories */}

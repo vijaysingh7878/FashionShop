@@ -33,7 +33,7 @@ const Header = () => {
           {/* Logo */}
           <div className="text-2xl font-semibold">
             <a href="/" className="text-white hover:text-gray-300">
-              ShopFusion
+              Fashion Shop
             </a>
           </div>
           {/* BarIcon part */}

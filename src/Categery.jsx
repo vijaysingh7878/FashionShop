@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Categery = ({ slug, rating, setRating, price, setPrice }) => {
   const ratingReturn = [4, 3, 2, 1];
   const [show, setShow] = useState([]);
+
+  // Fetch categories from API
   const getShow = () => {
     axios
       .get("https://dummyjson.com/products/categories")
@@ -13,100 +15,88 @@ const Categery = ({ slug, rating, setRating, price, setPrice }) => {
       })
       .catch((error) => {});
   };
+
   useEffect(() => {
     getShow();
   }, []);
+
   return (
-    <>
-      <div
-        className="xl:w-11/12 md:w-4/5  xl:text-base  md:text-sm  text-center overflow-y-scroll h-[90vh]  mb-3 m-3 sticky top-0"
-        id="cateGery"
-      >
-        {/* rating part start */}
-        <div className="mb-4">
-          <h2
-            className={` m-auto my-2 shadow-lg p-2 rounded-lg hover:bg-blue-500 ${
-              rating === 0 ? "bg-blue-500  text-white" : ""
-            } cursor-pointer`}
-            onClick={() => {
-              setRating(0);
-            }}
+    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md overflow-y-scroll h-[100vh]  sticky top-0">
+      {/* Rating Filter Section */}
+      <div className="bg-white p-6 mb-8 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Filter by Rating</h2>
+        <div className="space-y-2">
+          <div
+            className={`py-2 px-4 rounded-lg cursor-pointer text-center ${
+              rating === 0 ? "bg-blue-600 text-white" : "bg-gray-100 hover:bg-blue-500"
+            } transition-all duration-300`}
+            onClick={() => setRating(0)}
           >
-            All Rating
-          </h2>
-          {ratingReturn.map((v, i) => {
-            return (
-              <div
-                key={i}
-                className={`border  m-auto my-2 shadow-lg p-2 cursor-pointer rounded-lg hover:bg-blue-500 ${
-                  rating == v ? "bg-blue-500  text-white" : ""
-                }`}
-                onClick={() => {
-                  setRating(v);
-                }}
-              >
-                {`${v}`} ⭐ & Above
-              </div>
-            );
-          })}
-        </div>
-        {/* rating part end */}
-
-        {/* price part start */}
-
-        <div className="mb-4 pb-3">
-          <h1 className=" rounded-lg shadow-lg p-2 my-2 m-auto bg-blue-500">
-            Price -
-          </h1>
-          <input
-            type="number"
-            className="border border-black  px-2 w-4/6"
-            onChange={(event) => {
-              setPrice({ ...price, from: event.target.value });
-            }}
-          />
-          <span className="px-2 font-bold block"> to </span>
-          <input
-            type="number"
-            className="border  border-black px-2 w-4/6"
-            onChange={(event) => {
-              setPrice({ ...price, to: event.target.value });
-            }}
-          />
-        </div>
-        {/* price part end */}
-
-        {/* categary part start */}
-
-        <div>
-          <Link to={"/product"}>
-            <h2
-              className={`lg:text-xl   m-auto my-2 shadow-lg p-2 rounded-lg  hover:bg-blue-500 ${
-                slug == undefined ? "bg-blue-500  text-white" : ""
-              }`}
+            All Ratings
+          </div>
+          {ratingReturn.map((v, i) => (
+            <div
+              key={i}
+              className={`py-2 px-4 rounded-lg cursor-pointer text-center ${
+                rating === v ? "bg-blue-600 text-white" : "bg-gray-100 hover:bg-blue-500"
+              } transition-all duration-300`}
+              onClick={() => setRating(v)}
             >
-              All Cetegory
-            </h2>
-          </Link>
-          {show.map((v, i) => {
-            return (
-              <Link to={`/product/${v.slug}`} key={i}>
-                <Newfil name={v} slug={slug} />
-              </Link>
-            );
-          })}
+              {v} ⭐ & Above
+            </div>
+          ))}
         </div>
-        {/* categary part end */}
       </div>
-    </>
+
+      {/* Price Filter Section */}
+      <div className="bg-white p-6 mb-8 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Filter by Price</h2>
+        <div className="flex space-x-4">
+          <input
+            type="number"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(event) => setPrice({ ...price, from: event.target.value })}
+          />
+          <span className="flex items-center font-bold text-gray-800">to</span>
+          <input
+            type="number"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(event) => setPrice({ ...price, to: event.target.value })}
+          />
+        </div>
+      </div>
+
+      {/* Category Section */}
+      <div className="bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Filter by Categories</h2>
+        <Link to="/product">
+          <div
+            className={`text-center py-3 mb-3 rounded-lg cursor-pointer text-white ${
+              slug === undefined ? "bg-blue-600" : "bg-gray-300 hover:bg-blue-500"
+            } transition-all duration-300`}
+          >
+            All Categories
+          </div>
+        </Link>
+
+        {/* Category List */}
+        {show.map((v, i) => (
+          <Link to={`/product/${v.slug}`} key={i}>
+            <CategoryItem name={v} slug={slug} />
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
-function Newfil({ name, slug }) {
+
+// Category Item Component (Individual category item)
+function CategoryItem({ name, slug }) {
   return (
     <div
-      className={`border rounded-lg m-auto my-2 shadow-lg p-2 cursor-pointer hover:text-white hover:bg-blue-500 ${
-        slug == name.slug ? "bg-blue-500 text-white  rounded-lg" : ""
-      }`}
+      className={`py-3 px-4 rounded-lg cursor-pointer mb-4 border border-gray-300 text-center ${
+        slug === name.slug ? "bg-blue-600 text-white" : "bg-gray-100 hover:bg-blue-500"
+      } transition-all duration-300`}
     >
       {name.name}
     </div>
