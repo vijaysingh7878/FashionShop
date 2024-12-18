@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 /* media quiry part strat */
-@media only screen and (max-width:600px){
+@media only screen and (max-width:640px){
+    .ceteGory{
+       display: none;
+    }
     nav{
         display: none;
     }
     #headerBtn{
         display: none;
     }
-    #BarIcon{
+    .BarIcon{
         display: block;
         cursor: pointer;
     }

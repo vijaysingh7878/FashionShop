@@ -36,7 +36,7 @@ const Header = () => {
               Fashion Shop
             </a>
           </div>
-          {/* BarIcon part */}
+          {/* slaider BarIcon part */}
           <div
             className={`w-[100vw] h-[100vh] bg-[#00000066] top-0  absolute transition-all duration-500 ${
               overlay == true ? "-left-[110%]" : "left-0"
@@ -50,17 +50,29 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/about"} className="hover:text-gray-300" onClick={btn}>
+                  <Link
+                    to={"/about"}
+                    className="hover:text-gray-300"
+                    onClick={btn}
+                  >
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/product"} className="hover:text-gray-300" onClick={btn}>
+                  <Link
+                    to={"/product"}
+                    className="hover:text-gray-300"
+                    onClick={btn}
+                  >
                     Products
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/cart"} className="hover:text-gray-300" onClick={btn}>
+                  <Link
+                    to={"/cart"}
+                    className="hover:text-gray-300"
+                    onClick={btn}
+                  >
                     Cart
                   </Link>
                 </li>
@@ -76,8 +88,7 @@ const Header = () => {
           {/* Navigation */}
           {oldData != "" ? (
             <>
-              <div className="hidden" id="BarIcon">
-                
+              <div className="hidden BarIcon">
                 {overlay == true ? (
                   <i
                     className="fa-solid fa-bars absolute z-10 right-4"
@@ -90,6 +101,7 @@ const Header = () => {
                   ></i>
                 )}
               </div>
+              {/* header nav  */}
               <nav className="space-x-6">
                 <Link to={"/"} className="hover:text-gray-300">
                   Home
@@ -105,7 +117,7 @@ const Header = () => {
           ) : (
             ""
           )}
-
+          {/* header login-logout btn */}
           <div id="headerBtn">
             {oldData == "" ? (
               <div className="flex">
