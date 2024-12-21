@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const List = ({ slug, rating, setRating, price, setPrice }) => {
   const [Api, setApi] = useState([]);
-  const [limit, setLimit] = useState(16);
+  const [limit, setLimit] = useState(15);
 
   const getApi = () => {
     let Api;
@@ -48,7 +48,7 @@ const List = ({ slug, rating, setRating, price, setPrice }) => {
       <div className="text-center my-20">
         <button
           className="px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={() => setLimit(limit + 4)}
+          onClick={() => setLimit(limit + 3)}
         >
           Load More
         </button>

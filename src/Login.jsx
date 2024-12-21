@@ -20,15 +20,17 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        toast.success("Login Successfull !");
+        toast.success("Login Successful!");
         event.target.reset();
-        // console.log(user);;
-        setOldData(user.accessToken);
+        setTimeout(() => {
+          setOldData(user.accessToken);
+        }, 1000);
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        toast.error("Something went wrong !");
+        toast.error("Invalid ID or password !");
         console.log(error);
       });
   };

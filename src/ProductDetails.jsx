@@ -41,9 +41,9 @@ const ProductDetails = () => {
      <ToastContainer autoClose={500} position="top-center" />
       {
         <div className="max-w-6xl mx-auto p-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
             {/* Product Image */}
-            <div className="flex justify-center">
+            <div className="flex justify-center ">
               <img
                 src={`${showProduct?.thumbnail}`}
                 alt=""

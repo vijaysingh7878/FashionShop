@@ -75,42 +75,48 @@ function CartIteam({ totalCart, indexNum, cart, setCart }) {
   };
   return (
     <>
-     <div className="space-y-4 p-4 max-w-full">
-  <div className="flex flex-col md:flex-row items-center justify-between p-4 border-b">
-    <div className="flex items-center space-x-4 mb-4 md:mb-0">
-      <div className="w-24 h-24 bg-gray-200 rounded-md">
+  <div className="space-y-4 p-4 max-w-full">
+  <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 border-b gap-4">
+    {/* Image and Title Section */}
+    <div className="flex items-center space-x-4 md:w-1/4">
+      <div className="w-24 h-24 bg-gray-200 rounded-md overflow-hidden">
+        <Link to={`/ProductDetails/${totalCart.id}`}>
         <img
           src={totalCart.thumbnail}
           alt={totalCart.title}
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-full object-cover"
         />
+        </Link>
+        
       </div>
       <div>
         <h3 className="text-lg font-semibold text-gray-800">
           {totalCart.title}
         </h3>
-        <div className="text-sm text-gray-500">
-          #ID : {totalCart.id}
-        </div>
+        <div className="text-sm text-gray-500">#ID : {totalCart.id}</div>
       </div>
     </div>
 
-    <div className="flex items-center space-x-2 gap-2 mb-4 md:mb-0">
-      <span className="text-sm">Quantity -</span>
+    {/* Quantity Input Section */}
+    <div className="flex items-center gap-2">
+      <span className="text-sm">Quantity:</span>
       <input
         type="number"
         placeholder="1"
-        className="border border-black w-16 px-1 py-1 text-center text-sm md:w-20"
+        className="border border-black px-2 py-1 text-center text-sm w-full sm:w-16 md:w-20"
       />
     </div>
 
-    <div className="flex items-center space-x-4 text-lg font-semibold text-gray-800 mb-4 md:mb-0">
+    {/* Price Section */}
+    <div className="text-lg font-semibold text-gray-800">
       ₹ {totalCart.price}
     </div>
 
+    {/* Delete Button Section */}
     <div>
       <button
         className="flex items-center px-3 py-2 text-white bg-red-500 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+        aria-label="Delete item"
         onClick={() => cartDelete()}
       >
         Delete
@@ -118,6 +124,9 @@ function CartIteam({ totalCart, indexNum, cart, setCart }) {
     </div>
   </div>
 </div>
+
+
+
 
 
     </>

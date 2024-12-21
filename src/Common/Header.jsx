@@ -139,12 +139,12 @@ const Header = () => {
             ) : (
               <div>
                 <Link to={"/cart"}>
-                  <span className="hover:text-black bg-blue-400  px-3 py-2 rounded-lg text-white mx-2">
+                  <span className="hover:text-black bg-blue-500 px-3 py-2 rounded-lg text-white mx-2">
                     Cart ({cart.length})
                   </span>
                 </Link>
                 <button
-                  className="hover:text-black bg-blue-400 px-3 py-2 rounded-lg text-white mx-2"
+                  className="hover:text-black bg-blue-500 px-3 py-2 rounded-lg text-white mx-2"
                   onClick={logout}
                 >
                   Logout

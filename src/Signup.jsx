@@ -5,7 +5,7 @@ import { app } from "./FireBase";
 import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const register = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -16,15 +16,18 @@ const Signup = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        toast.success('Account is Created !')
+        toast.success("Account is Created !");
         event.target.reset();
-        navigate('/login')
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        toast.error('Something went wrong !')
+        toast.error("Something went wrong !");
         // ..
       });
   };
