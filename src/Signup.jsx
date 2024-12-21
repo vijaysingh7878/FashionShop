@@ -101,7 +101,7 @@ const Signup = () => {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none"
+                className="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none"
               >
                 Sign Up
               </button>
